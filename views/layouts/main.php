@@ -41,8 +41,8 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
-            ['label' => '!!!Добавить!!!', 'url' => ['/finances/add']],
-            ['label' => 'Расходы', 'url' => ['/edit/index']],
+            ['label' => 'Графики', 'url' => ['/graphic/index']],
+            ['label' => 'Расходы', 'url' => ['/edit/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Регистрация', 'url' => ['/site/register'], 'visible' => Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (

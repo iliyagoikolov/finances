@@ -8,6 +8,7 @@ use app\models\EditSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\View;
 
 /**
  * EditController implements the CRUD actions for Charges model.
@@ -35,6 +36,10 @@ class EditController extends Controller
      */
     public function actionIndex()
     {
+        if (Yii::$app->user->isGuest)
+        {
+            $this->goHome();
+        }
         $searchModel = new EditSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -52,6 +57,10 @@ class EditController extends Controller
      */
     public function actionView($id)
     {
+        if (Yii::$app->user->isGuest)
+        {
+            $this->goHome();
+        }
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -64,6 +73,10 @@ class EditController extends Controller
      */
     public function actionCreate()
     {
+        if (Yii::$app->user->isGuest)
+        {
+            $this->goHome();
+        }
         $model = new Charges();
         $model->user_id = Yii::$app->user->id;
         $model->date = (new \DateTime())->format('Y/m/d');
@@ -85,6 +98,10 @@ class EditController extends Controller
      */
     public function actionUpdate($id)
     {
+        if (Yii::$app->user->isGuest)
+        {
+            $this->goHome();
+        }
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -105,6 +122,10 @@ class EditController extends Controller
      */
     public function actionDelete($id)
     {
+        if (Yii::$app->user->isGuest)
+        {
+            $this->goHome();
+        }
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -119,6 +140,7 @@ class EditController extends Controller
      */
     protected function findModel($id)
     {
+
         if (($model = Charges::findOne($id)) !== null) {
             return $model;
         }
