@@ -9,7 +9,6 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -41,9 +40,10 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
-            ['label' => 'Графики', 'url' => ['/graphic/index']],
+            ['label' => 'Vulnerability (Works in Debug mode)', 'url' => ['/site/vulnerability']],
+            ['label' => 'Графики', 'url' => ['/graphic/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Расходы', 'url' => ['/edit/index'], 'visible' => !Yii::$app->user->isGuest],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Контакты', 'url' => ['/site/contact']],
             ['label' => 'Регистрация', 'url' => ['/site/register'], 'visible' => Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Войти', 'url' => ['/site/login']]

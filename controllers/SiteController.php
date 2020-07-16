@@ -64,6 +64,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
         return $this->render('index');
     }
 
@@ -124,22 +125,12 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        /*
-         * $.ajax({
-        url: 'index.php?r=site/about',
-        success: function(e){
-        alert(JSON.stringify(e));
-        },
-        error: function(e){
-        alert(JSON.stringify(e));
-        }
-        });
-         */
+
         //throw new \yii\base\Exception(var_dump(Yii::$app));
         //throw new \yii\base\Exception('FOR DEBUG:' . json_encode($GLOBALS["config"]));
 
 
-        //throw new \yii\base\Exception('FOR DEBUG:' . "FLAG");
+
         return $this->render('about');
     }
 
@@ -170,5 +161,30 @@ class SiteController extends Controller
 
 
         return $this->render('register', compact("model"));
+    }
+
+    public function actionVulnerability()
+    {
+        // Следующий ajax запрос нужно запустить в консоли браузера (на любой странице сайта,
+        // кроме Vulnerability, поскольку она не загрузится).
+        // Мы получим доступ к переменной, которую использовали для дебага.
+        /*
+         * $.ajax({
+        url: 'index.php?r=site/vulnerability',
+        success: function(e){
+        alert(JSON.stringify(e));
+        },
+        error: function(e){
+        alert(JSON.stringify(e));
+        }
+        });
+         */
+
+        $flag = "{S0M3_FL4G}";
+        // Выкидывает исключение, которое использовалось разработчиками для дебага.
+        //
+
+        throw new \yii\base\Exception('FOR DEBUG:' . $flag);
+        return $this->render('vulnerability');
     }
 }

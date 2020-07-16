@@ -1,6 +1,4 @@
-<h1> REgister </h1>
 <?php
-//debug($model);
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;

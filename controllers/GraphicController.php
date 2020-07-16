@@ -18,6 +18,11 @@ class GraphicController extends Controller
     public function actionIndex()
     {
         //$model = new Charges();
+        if (\Yii::$app->user->isGuest)
+        {
+            $this->goHome();
+        }
+        $colors = [];
         $user_id = \Yii::$app->user->id;
         $query = "SELECT `category` FROM `charges` WHERE `user_id` = :user_id GROUP BY `category` ORDER BY `category`";
         $categories = Charges::findBySql($query, [":user_id" => $user_id])->all();
@@ -33,7 +38,7 @@ class GraphicController extends Controller
             $colors[$i] = $this->random_color();
         }
 
-        return $this->render('index', compact("categories", "summ", "count", "colors"));
+        return $this->render('index', compact("categories", "summ", "colors"));
     }
 
 }
