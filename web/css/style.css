@@ -1,8 +1,15 @@
-body
-{
-    background: red;
+.image {
+    width: 100%;
 }
-
-.navbar-text{
-    font-size: 5px;
+.site-index {
+    font-size: 19px;
+    line-height: normal;
+    text-align: justify;
+}
+.site-index p {
+    text-indent: 20px;
+    font-family: 'Glyphicons Halflings', serif;
+}
+.header {
+    padding-left: 20px;
 }
